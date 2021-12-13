@@ -1,5 +1,9 @@
 package com.codecool.battleship;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Player {
     private boolean alive;
     private List<Ship> shipList = new ArrayList<Ship>();
