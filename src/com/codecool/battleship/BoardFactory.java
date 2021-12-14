@@ -5,13 +5,14 @@ import java.util.ArrayList;
 public class BoardFactory {
     private final Board board;
     private final Player player;
-    private final int boardSize = 10;
     private static final Input playerInput = new Input();
     private static final Random pickRandom = new Random();
     private Display boardDisplay = new Display("board");
 
 
     public BoardFactory(Player player) {
+        String askForBoardSize = playerInput.askForUser("How big board do you want to play on?");
+        int boardSize = Integer.parseInt(askForBoardSize);
         board = new Board(boardSize);
         this.player = player;
         player.setBoard(board);
@@ -45,8 +46,7 @@ public class BoardFactory {
             row = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
             col = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
         }while (!(board.isPlacementOk(oneShip.getShipSize(), shipDirection, row, col)));
-        Square location = new Square(row, col, SquareStatus.SHIP);
-        return location;
+        return new Square(row, col, SquareStatus.SHIP);
     }
 
     private Square placeShipManually(ShipType oneShip) {
@@ -62,8 +62,7 @@ public class BoardFactory {
                 System.out.println("Bad choice, you can not place ship there.\n Try again!");
             }
         }while (!(board.isPlacementOk(oneShip.getShipSize(), direction, row, col)));
-        Square location = new Square(row, col, SquareStatus.SHIP);
-        return location;
+        return new Square(row, col, SquareStatus.SHIP);
         }
 
     }
