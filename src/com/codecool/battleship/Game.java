@@ -8,9 +8,10 @@ public class Game {
 
     public void startGame (){
         for (int i = 0; i < 2; i++) {
+            playerName = (i == 0) ? "player UNO" : "player DOS";
+            }
             Player player = new Player(playerName);
         }
-    }
 
     public void shootingGame(){
         Boolean win = false;
