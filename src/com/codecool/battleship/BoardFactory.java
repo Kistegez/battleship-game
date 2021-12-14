@@ -11,11 +11,16 @@ public class BoardFactory {
         board = new Board(boardSize);
         this.player = player;
         player.setBoard(board);
+        placeShips();
+
+    }
+
+    private void placeShips() {
         for (ShipType oneShip : ships){
             Ship ship = new Ship(oneShip);
+
+            ship.setterShip(location);
             player.addShipToPlayer(ship);
         }
-        System.out.println(board);
-
     }
 }

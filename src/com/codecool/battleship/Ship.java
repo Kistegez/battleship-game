@@ -12,5 +12,6 @@ public class Ship {
 
     public void setterShip(Square locations) {
         this.locations.add(locations);
+        locations.setStatus(SquareStatus.SHIP);
     }
 }
