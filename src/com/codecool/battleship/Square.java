@@ -12,6 +12,10 @@ public class Square {
         this.status = status;
     }
 
+    public SquareStatus getStatus(){
+        return this.status;
+    }
+
 
 
 }
