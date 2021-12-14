@@ -12,7 +12,7 @@ public class Board {
         ocean = new Square[boardSize][boardSize];
         for (int row = 0; row < (boardSize+1) ; row++) {
             for (int col = 0; col < (boardSize+1); col++) {
-                Square square = new Square(row,col);
+                Square square = new Square(row,col,SquareStatus.EMPTY);
                 ocean[row][col] = square;
             }
         }
