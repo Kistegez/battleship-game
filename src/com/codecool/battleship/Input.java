@@ -22,9 +22,10 @@ public class Input {
             catch(Exception e) {
                 System.out.println("Error! Invalid input, try again!");
             }
-
         }
         return 0;
     }
+
+
 
 }
