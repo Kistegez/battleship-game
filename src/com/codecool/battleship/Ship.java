@@ -10,7 +10,7 @@ public class Ship {
         this.type = type;
     }
 
-    public void setterShip(Suaqre locations) {
+    public void setterShip(Square locations) {
         this.locations.add(locations);
     }
 }
