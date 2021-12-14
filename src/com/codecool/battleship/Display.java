@@ -1,10 +1,13 @@
 package com.codecool.battleship;
 
+import java.util.SplittableRandom;
+
 public class Display {
 
     private String displayType;
     private String[][] board;
     int n;
+    private boolean gamed = false;
 
     public Display (String displayType){
         this.displayType = displayType;
@@ -15,12 +18,24 @@ public class Display {
         this.board = board;
     }
 
+    public Display(String displayType, Boolean gamed){
+        this.gamed = gamed;
+        this.displayType = displayType;
+    }
+
+
     public void displayMenu(){
-        if (displayType.equalsIgnoreCase(displayType)){
+        if (displayType.equalsIgnoreCase("menu")){
             System.out.println("|----------------------|");
             System.out.println("| BATTLESHIP GAME MENU |");
             System.out.println("|----------------------|");
-            System.out.println(" [1] Start game  ");
+
+            if (this.gamed){
+                System.out.println(" [1] Try again");
+            }
+            else {
+                System.out.println(" [1] Start game  ");
+            }
             System.out.println(" [2] High scores ");
             System.out.println(" [3] Exit");
         }
