@@ -28,6 +28,7 @@ public class Battleship {
 
                     Game game = new Game();
                     game.startGame();
+                    game.shootingGame();
                     break;
                 case 2: //Display high scores.
                     System.out.println("12314223 point");
