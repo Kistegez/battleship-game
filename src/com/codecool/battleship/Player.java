@@ -5,10 +5,12 @@ import java.util.List;
 
 
 public class Player {
+    private String name;
     private boolean alive;
     private List<Ship> shipList = new ArrayList<>();
 
-    public Player() {
+    public Player(String player) {
+        this.name = player;
         this.alive = true;
     }
 
