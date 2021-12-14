@@ -17,6 +17,14 @@ public class Board {
         }
     }
 
+    public Square [][] getBoard(){
+        return board;
+    }
+
+    public Square getSquare(int row, int col){
+        return board[row][col];
+    }
+
     public boolean isPlacementOk(int ship, String direction, int row, int col) {
         if (Objects.equals(direction, "h")) {
             return validateHorizontal(ship,row,col);

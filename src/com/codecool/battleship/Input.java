@@ -1,13 +1,18 @@
 package com.codecool.battleship;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Scanner;
 
 public class Input {
 
     private String menuChoosingNumber;
+    private Scanner inputScan = new Scanner(System.in);
 
     public Input (String inputType){
         this.menuChoosingNumber = inputType;
+    }
+
+    public Input(){
     }
 
     public int menuPointChoosing(){
@@ -24,5 +29,10 @@ public class Input {
             }
         }
         return 0;
+    }
+
+    public String askForUser(String question){
+        System.out.println(question);
+        return inputScan.nextLine();
     }
 }
