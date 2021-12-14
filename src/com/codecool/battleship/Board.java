@@ -4,7 +4,18 @@ import java.util.Objects;
 
 public class Board {
     Square[][] board;
-    int boardSize = 10;
+    int boardSize;
+
+    public Board(int boardSize) {
+        this.boardSize = boardSize;
+        board = new Square[boardSize][boardSize];
+        for (int row = 0; row < (boardSize) ; row++) {
+            for (int col = 0; col < (boardSize); col++) {
+                Square square = new Square(row,col,SquareStatus.EMPTY);
+                board[row][col] = square;
+            }
+        }
+    }
 
     public boolean isPlacementOk(int ship, String direction, int row, int col) {
         if (Objects.equals(direction, "h")) {
@@ -74,19 +85,5 @@ public class Board {
 
         }
         return false;
-    }
-
-    public void createBoard() {
-        board = new Square[boardSize][boardSize];
-        for (int row = 0; row < (boardSize+1) ; row++) {
-            for (int col = 0; col < (boardSize+1); col++) {
-    public Board(int boardSize) {
-        ocean = new Square[boardSize][boardSize];
-        for (int row = 0; row < (boardSize) ; row++) {
-            for (int col = 0; col < (boardSize); col++) {
-                Square square = new Square(row,col,SquareStatus.EMPTY);
-                board[row][col] = square;
-            }
-        }
     }
 }
