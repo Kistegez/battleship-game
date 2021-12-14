@@ -38,13 +38,10 @@ public class Board {
                 else if (row-1 > 0 && board[row-1][col].getStatus() != SquareStatus.EMPTY) {
                     return false;
                 }
-                return true;
 
             }
-
+            return true;
         }
-
-        return false;
     }
 
     public boolean validateHorizontal(int ship, int row, int col) {
@@ -68,12 +65,10 @@ public class Board {
                 else if (col-i > 0 && board[row][col-1].getStatus() != SquareStatus.EMPTY) {
                     return false;
                 }
-                return true;
 
             }
-
+            return true;
         }
-        return false;
     }
 
     public void createBoard() {
