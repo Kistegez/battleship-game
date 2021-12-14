@@ -19,6 +19,8 @@ public class BoardFactory {
         for (ShipType oneShip : ships){
             Ship ship = new Ship(oneShip);
 
+            board.isPlacementOk(oneShip.getShipSize(), direction, row, col);
+            Square location = new Square(row, col, SquareStatus.SHIP);
             ship.setterShip(location);
             player.addShipToPlayer(ship);
         }
