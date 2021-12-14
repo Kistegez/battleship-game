@@ -1,5 +1,5 @@
 package com.codecool.battleship;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Input {
@@ -25,7 +25,4 @@ public class Input {
         }
         return 0;
     }
-
-
-
 }

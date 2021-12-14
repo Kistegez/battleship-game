@@ -11,6 +11,7 @@ public class Game {
         Boolean newGame = false;
 
         do{
+            loose = true;
         } while (win == false && loose == false && exit == false && newGame == false);
     }
 }
