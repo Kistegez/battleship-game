@@ -27,6 +27,7 @@ public class Input {
         return 0;
     }
 
+
     public ArrayList coordinateInputs(){
         ArrayList<Integer> coordinateList = new ArrayList<>();
         ArrayList<Character> abc = new ArrayList<>();
@@ -81,3 +82,5 @@ public class Input {
     }
 
 }
+}
+
