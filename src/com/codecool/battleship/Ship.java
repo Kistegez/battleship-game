@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
-    private final List<Square> locations = new ArrayList<Square>();
+    private final List<Square> locations = new ArrayList<>();
     private final ShipType type;
 
     public Ship(ShipType type) {

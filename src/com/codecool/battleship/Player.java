@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Player {
     private boolean alive;
-    private List<Ship> shipList = new ArrayList<Ship>();
+    private List<Ship> shipList = new ArrayList<>();
 
     public Player() {
         this.alive = true;
@@ -20,7 +20,7 @@ public class Player {
         return alive;
     }
 
-    public void changeAlive(){
+    public void playerLost(){
         this.alive = false;
     }
 }

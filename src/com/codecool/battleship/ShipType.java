@@ -12,7 +12,7 @@ public enum ShipType {
         shipSize = size;
     }
 
-    public int getType(){
+    public int getShipSize(){
         return shipSize;
     }
 }
