@@ -85,13 +85,10 @@ public class Input {
         return  coordinateList;
     }
 
-}
-}
-
-
-
     public String askForUser(String question){
         System.out.println(question);
         return inputScan.nextLine();
     }
+
 }
+
