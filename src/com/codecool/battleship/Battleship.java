@@ -8,10 +8,6 @@ public class Battleship {
         Display gamed = new Display("menu", true);
         boolean playedGame = false;
 
-        Input coordinate = new Input("menu");
-        System.out.println(coordinate.coordinateInputs());
-
-
         do{
             int option = 0;
 
