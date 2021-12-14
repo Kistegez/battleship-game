@@ -2,7 +2,7 @@ package com.codecool.battleship;
 
 public class Game {
     String playerName = "player UNO";
-    ShipType [] ships = {ShipType.valueOf("CRUISER"), ShipType.valueOf("DESTROYER"), ShipType.valueOf("SUBMARINE"), ShipType.valueOf("BATTLESHIP"), ShipType.valueOf("CARRIER")};
+    private final static ShipType [] ships = {ShipType.CRUISER, ShipType.DESTROYER, ShipType.SUBMARINE, ShipType.BATTLESHIP, ShipType.CARRIER};
 
     public Game(){
     }
@@ -12,14 +12,12 @@ public class Game {
             Player player = new Player(playerName);
             Board board = new Board(playerName);
             board.createBoard();
+            System.out.println(board);
             for (ShipType oneShip : ships){
                 Ship ship = new Ship(oneShip);
                 player.addShipToPlayer(ship);
             }
-            System.out.println(board);
-
         }
-
     }
 
     public void shootingGame(){

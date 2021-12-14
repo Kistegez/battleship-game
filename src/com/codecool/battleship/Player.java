@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class Player {
-    private String name;
+    private final String name;
     private boolean alive;
     private List<Ship> shipList = new ArrayList<>();
 
