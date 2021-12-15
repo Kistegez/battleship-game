@@ -11,13 +11,11 @@ public class Player {
 
     public Player(String player) {
         this.name = player;
-        BoardFactory boardFactory = new BoardFactory(this);
     }
 
     public void setBoard(Board board){
         this.board = board;
     }
-
 
     public void addShipToPlayer(Ship ship){
         this.shipList.add(ship);
@@ -31,16 +29,14 @@ public class Player {
         return this.board;
     }
 
-
     public boolean checkAlive(){
         for (Ship ship: shipList){
             for (Square square: ship.getLocations()){
-                if (square.getStatus() == SquareStatus.EMPTY){
+                if (square.getStatus() == SquareStatus.SHIP){
                     return true;
                 }
             }
         }
         return false;
     }
-
 }

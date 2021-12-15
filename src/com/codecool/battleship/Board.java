@@ -36,7 +36,6 @@ public class Board {
             return validateVertical(ship, row, col);
         }
         return false;
-
     }
 
     public boolean validateVertical(int ship, int row, int col) {
