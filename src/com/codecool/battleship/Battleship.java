@@ -8,6 +8,8 @@ public class Battleship {
         Display gamed = new Display("menu", true);
         boolean playedGame = false;
 
+
+
         do{
             int option = 0;
 
@@ -28,7 +30,12 @@ public class Battleship {
 
                     Game game = new Game();
                     game.startGame();
+
+                    Display board = new Display("board");
+
                     game.shootingGame();
+
+
                     break;
                 case 2: //Display high scores.
                     System.out.println("12314223 point");

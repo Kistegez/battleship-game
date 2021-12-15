@@ -1,22 +1,17 @@
 package com.codecool.battleship;
 
+import java.lang.reflect.Array;
 import java.util.SplittableRandom;
 
 public class Display {
 
     private String displayType;
-    private String[][] board;
-    int n;
     private boolean gamed = false;
-
+    private Board board;
     public Display (String displayType){
         this.displayType = displayType;
     }
 
-    public Display (String displayType, String[][] board){
-        this.displayType = displayType;
-        this.board = board;
-    }
 
     public Display(String displayType, Boolean gamed){
         this.gamed = gamed;
@@ -41,17 +36,20 @@ public class Display {
         }
     }
 
-    public void dispplayBoard(){
-        if (displayType.equalsIgnoreCase("board")){
-            for (int i = 0; i <= n; i++) {
-                for (int j = 0; j <= n; j++) {
-                    if (board[9][3].equalsIgnoreCase("empty")){
 
-                    }
-                }
+    public void dispplayBoard(Board board){
+
+        for (int i = 0; i < board.boardSize; i++) {
+            for (int j = 0; j < board.boardSize; j++) {
+                System.out.print("\t");
+                System.out.print(board.getSquare(i, j).getStatus().getCharacter());
             }
+            System.out.println("\n");
+        }
+
+
+
 
         }
-    }
 
 }
