@@ -78,5 +78,4 @@ public class BoardFactory {
         }
         player.addShipToPlayer(ship);
     }
-
 }
