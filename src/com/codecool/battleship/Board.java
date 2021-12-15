@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Board {
     Square[][] board;
-    int boardSize;
+    int boardSize = 10;
 
     public Board(int boardSize) {
         this.boardSize = boardSize;
@@ -17,9 +17,12 @@ public class Board {
         }
     }
 
+    public Board(){}
+
     public Square [][] getBoard(){
         return board;
     }
+
 
     public Square getSquare(int row, int col){
         return board[row][col];

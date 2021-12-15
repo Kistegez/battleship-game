@@ -8,6 +8,8 @@ public class Battleship {
         Display gamed = new Display("menu", true);
         boolean playedGame = false;
 
+
+
         do{
             int option = 0;
 
