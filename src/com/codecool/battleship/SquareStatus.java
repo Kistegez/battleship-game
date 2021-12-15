@@ -1,18 +1,18 @@
 package com.codecool.battleship;
 
 public enum SquareStatus {
-    EMPTY('O'),
-    SHIP('S'),
-    HIT('H'),
-    MISSED('M');
-    private char status;
+    EMPTY("\uD83C\uDf0A"),
+    SHIP("\uD83D\uDEA3"),
+    HIT("\uD83D\uDCA5"),
+    MISSED("\uD83D\uDcA6");
+    private String status;
 
 
-    SquareStatus(char type) {
+    SquareStatus(String type) {
         status = type;
     }
 
-    public char getCharacter() {
+    public String getCharacter() {
         return status;
     }
 }
