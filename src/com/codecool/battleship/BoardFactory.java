@@ -37,8 +37,13 @@ public class BoardFactory {
         do {
             getShipDirection = pickRandom.nextInt(2);
             shipDirection = (getShipDirection == 1) ? "h" : "v";
-            row = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
-            col = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
+            if (shipDirection.equals("h")){
+                row = pickRandom.nextInt(board.getBoard().length);
+                col = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
+            }else {
+                row = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
+                col = pickRandom.nextInt(board.getBoard().length);
+            }
         }while (!(board.isPlacementOk(oneShip.getShipSize(), shipDirection, row, col)));
         createShipLocations(shipDirection, oneShip.getShipSize(), row, col, ship);
     }
@@ -63,13 +68,13 @@ public class BoardFactory {
     private void createShipLocations(String direction, int shipSize, int row, int col, Ship ship) {
         for (int i = 0; i < shipSize; i++ ) {
             if (Objects.equals(direction, "h")) {
-                Square location = board.getSquare(row+i, col);
+                Square location = board.getSquare(row, col+i);
                 location.setStatus(SquareStatus.SHIP);
                 ship.setterShip(location);
 
             }
             else if (Objects.equals(direction, "v")) {
-                Square location = board.getSquare(row, col+i);
+                Square location = board.getSquare(row+i, col);
                 location.setStatus(SquareStatus.SHIP);
                 ship.setterShip(location);
             }

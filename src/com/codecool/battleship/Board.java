@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Board {
     Square[][] board;
-    int boardSize = 10;
+    int boardSize;
 
     public Board(int boardSize) {
         this.boardSize = boardSize;
@@ -38,26 +38,36 @@ public class Board {
         return false;
     }
 
-    public boolean validateVertical(int ship, int row, int col) {
-        if((row + ship) > boardSize) {
+    public boolean validateVertical(int shipSize, int row, int col) {
+        if((row + shipSize) > boardSize) {
             return false;
         }
         else {
-            for (int i = 0; i < ship; i++) {
-                if (boardSize-1 > col +(i+1) && board[row+i][col+1].getStatus() != SquareStatus.EMPTY) {
+            for (int i = 0; i < shipSize; i++) {
+
+                if (board[row+i][col].getStatus() != SquareStatus.EMPTY ) { //saját magát, ahova kerülni fog
                     return false;
                 }
-                else if (boardSize-1 > row+i && board[row+i][col].getStatus() != SquareStatus.EMPTY ) {
-                    return false;
+                if (boardSize > col +1) {
+                    if (board[row + i][col + 1].getStatus() != SquareStatus.EMPTY){ // jobb oldalát hacsak nem az utolsó oszlopba kerülne
+                        return false;
+                    }
                 }
-                else if (boardSize-1 > row+1 && board[row+1][col].getStatus() != SquareStatus.EMPTY ) {
-                    return false;
+                if (col-1 >= 0) {
+                    if (board[row + i][col - 1].getStatus() != SquareStatus.EMPTY) { // bal oldalát hacsak nem az első oszlopba kerülne
+                        return false;
+                    }
                 }
-                else if (col-i > 0 && board[row+i][col-1].getStatus() != SquareStatus.EMPTY) {
-                    return false;
+                if (boardSize > row+i+1){
+                    if (board[row+i+1][col].getStatus() != SquareStatus.EMPTY){ // az alját, hacsak nem az utolsó sorba végződik
+                        return false;
+                    }
                 }
-                else if (row-1 > 0 && board[row-1][col].getStatus() != SquareStatus.EMPTY) {
-                    return false;
+
+                if (row-1 >= 0){
+                    if(board[row-1][col].getStatus() != SquareStatus.EMPTY){ // tetejét, hacsak nem az első sorban kezdődne
+                        return false;
+                    }
                 }
 
             }
@@ -71,20 +81,33 @@ public class Board {
         }
         else {
             for (int i = 0; i < ship; i++) {
-                if (board[row][col+i].getStatus() != SquareStatus.EMPTY) {
+
+                if (board[row][col+i].getStatus() != SquareStatus.EMPTY ) { //saját magát, ahova kerülni fog
                     return false;
                 }
-                else if (boardSize-1 > row && board[row+1][col+i].getStatus() != SquareStatus.EMPTY ) {
-                    return false;
+
+                if (boardSize > row + 1) {
+                    if (board[row + 1][col + i].getStatus() != SquareStatus.EMPTY){ // alját hacsak nem a legalsó sorba kerülne
+                        return false;
+                    }
                 }
-                else if (boardSize-1 > col+i+1 && board[row][col+(i+1)].getStatus() != SquareStatus.EMPTY ) {
-                    return false;
+
+                if (row-1 >= 0) {
+                    if (board[row - 1][col + i].getStatus() != SquareStatus.EMPTY) { // tetejét, hacsak nem a legfelső sorba kerülne
+                        return false;
+                    }
                 }
-                else if (row-1 >= 0 && board[row-1][col+i].getStatus() != SquareStatus.EMPTY) {
-                    return false;
+
+                if (boardSize > col+i+1){
+                    if (board[row][col+i+1].getStatus() != SquareStatus.EMPTY){ // legjobboldalát, hacsak nem az utolsó oszlopban végződik
+                        return false;
+                    }
                 }
-                else if (col-i > 0 && board[row][col-1].getStatus() != SquareStatus.EMPTY) {
-                    return false;
+
+                if (col-1 >= 0) {
+                    if (board[row][col-1].getStatus() != SquareStatus.EMPTY) { // tetejét, hacsak nem az első oszlopban kezdődne
+                        return false;
+                    }
                 }
 
             }
