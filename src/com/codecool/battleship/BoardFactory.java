@@ -3,39 +3,31 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class BoardFactory {
-    private final Board board;
-    private final Player player;
     private static final Input playerInput = new Input();
     private static final Random pickRandom = new Random();
     private Display boardDisplay = new Display("board");
 
 
-    public BoardFactory(Player player) {
-        String askForBoardSize = playerInput.askForUser("How big board do you want to play on?");
-        int boardSize = Integer.parseInt(askForBoardSize);
-        board = new Board(boardSize);
-        this.player = player;
-        player.setBoard(board);
-        placeShips();
-
+    public BoardFactory() {
     }
 
-    private void placeShips() {
+    public void placeShips(Player player) {
         for (ShipType oneShip : ShipType.values()) {
             Ship ship = new Ship(oneShip);
             Square location = null;
             String placementType = playerInput.askForUser("Where do you want to place your " + oneShip + " ships:\n [1] Manually \n [2] Randomly");
             if (placementType.equals("1")) {
-                location = placeShipManually(oneShip);
+                location = placeShipManually(oneShip, player.getBoard());
             } else if (placementType.equals("2")) {
-                location = placeShipRandomly(oneShip);
+                location = placeShipRandomly(oneShip, player.getBoard());
             }
             ship.setterShip(location);
             player.addShipToPlayer(ship);
+
         }
     }
 
-    private Square placeShipRandomly(ShipType oneShip) {
+    private Square placeShipRandomly(ShipType oneShip, Board board) {
         int getShipDirection;
         String shipDirection;
         int row;
@@ -49,7 +41,7 @@ public class BoardFactory {
         return new Square(row, col, SquareStatus.SHIP);
     }
 
-    private Square placeShipManually(ShipType oneShip) {
+    private Square placeShipManually(ShipType oneShip, Board board) {
         String direction;
         int row;
         int col;
