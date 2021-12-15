@@ -6,13 +6,11 @@ import java.util.List;
 
 public class Player {
     private final String name;
-    private boolean alive;
     private List<Ship> shipList = new ArrayList<>();
     private Board board;
 
     public Player(String player) {
         this.name = player;
-        this.alive = true;
         BoardFactory boardFactory = new BoardFactory(this);
     }
 
@@ -35,10 +33,14 @@ public class Player {
 
 
     public boolean checkAlive(){
-        return alive;
+        for (Ship ship: shipList){
+            for (Square square: ship.getLocations()){
+                if (square.getStatus() == SquareStatus.EMPTY){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
-    public void playerLost(){
-        this.alive = false;
-    }
 }
