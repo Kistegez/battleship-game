@@ -16,8 +16,9 @@ public class BoardFactory {
         board = new Board(boardSize);
         this.player = player;
         player.setBoard(board);
+        Display printBoard = new Display("board");
+        printBoard.dispplayBoard(board);
         placeShips();
-
     }
 
     private void placeShips() {
@@ -32,6 +33,7 @@ public class BoardFactory {
             }
             ship.setterShip(location);
             player.addShipToPlayer(ship);
+            //display
         }
     }
 
