@@ -1,26 +1,23 @@
 package com.codecool.battleship;
 
 public class Game {
-    String playerName = "player UNO";
+    Player player1;
+    Player player2;
+
 
     public Game(){
+        this.player1 = new Player("player UNO");
+        this.player2 = new Player("player DOS");
     }
 
-    public void startGame (){
-        for (int i = 0; i < 2; i++) {
-            playerName = (i == 0) ? "player UNO" : "player DOS";
-            }
-            Player player = new Player(playerName);
-        }
-
-    public void shootingGame(){
-        Boolean win = false;
-        Boolean loose = false;
+    public void gameFlow(){
+        Player currentPlayer = this.player1;
+        Player enemyPlayer = this.player2;
         Boolean exit = false;
         Boolean newGame = false;
 
         do{
-            loose = true;
-        } while (win == false && loose == false && exit == false && newGame == false);
+
+        } while (enemyPlayer.checkAlive() && exit == false && newGame == false);
     }
 }
