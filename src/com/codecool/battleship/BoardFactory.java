@@ -34,6 +34,8 @@ public class BoardFactory {
             ship.setterShip(location);
             player.addShipToPlayer(ship);
             //display
+            Display printBoard = new Display("board");
+            printBoard.dispplayBoard(board);
         }
     }
 

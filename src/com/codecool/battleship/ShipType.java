@@ -1,7 +1,7 @@
 package com.codecool.battleship;
 
 public enum ShipType {
-    CRUISER(2),
+    CRUISER(1),
     SUBMARINE(3),
     DESTROYER(3),
     BATTLESHIP(4),

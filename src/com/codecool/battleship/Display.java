@@ -1,6 +1,7 @@
 package com.codecool.battleship;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.SplittableRandom;
 
 public class Display {
@@ -39,17 +40,21 @@ public class Display {
 
     public void dispplayBoard(Board board){
 
+        ArrayList<Character> abc = new ArrayList<>();
+        char c;
+        for(c = 'A'; c <= 'Z'; ++c) {
+            abc.add(c);
+        }
+
         for (int i = 0; i < board.boardSize; i++) {
+            System.out.print(abc.get(i));
             for (int j = 0; j < board.boardSize; j++) {
+                char slot = board.getSquare(i, j).getStatus().getCharacter();
                 System.out.print("\t");
-                System.out.print(board.getSquare(i, j).getStatus().getCharacter());
+                System.out.print(slot);
             }
+
             System.out.println("\n");
         }
-
-
-
-
-        }
-
+    }
 }
