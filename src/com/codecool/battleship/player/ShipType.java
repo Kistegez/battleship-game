@@ -1,4 +1,4 @@
-package com.codecool.battleship;
+package com.codecool.battleship.player;
 
 public enum ShipType {
     CRUISER(2),

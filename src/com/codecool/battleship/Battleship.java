@@ -1,6 +1,8 @@
 
 package com.codecool.battleship;
-import java.util.Scanner;
+import com.codecool.battleship.util.Display;
+import com.codecool.battleship.util.Input;
+
 public class Battleship {
     public static void main(String[] args) {
         boolean isRunning = true;

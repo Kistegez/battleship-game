@@ -1,8 +1,8 @@
-package com.codecool.battleship;
+package com.codecool.battleship.util;
 
-import java.lang.reflect.Array;
+import com.codecool.battleship.board.*;
+
 import java.util.ArrayList;
-import java.util.SplittableRandom;
 
 public class Display {
 

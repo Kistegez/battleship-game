@@ -1,4 +1,4 @@
-package com.codecool.battleship;
+package com.codecool.battleship.util;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Scanner;
