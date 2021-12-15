@@ -45,7 +45,17 @@ public class Display {
         for(c = 'A'; c <= 'Z'; ++c) {
             abc.add(c);
         }
-
+        System.out.println("\t");
+        for (int i = 0; i < board.boardSize + 1; i++){
+            if(i == 0){
+                System.out.println(" ");
+            }
+            else {
+                System.out.print(i);
+            }
+            System.out.print("\t");
+        }
+        System.out.println("\n");
         for (int i = 0; i < board.boardSize; i++) {
             System.out.print(abc.get(i));
             for (int j = 0; j < board.boardSize; j++) {
