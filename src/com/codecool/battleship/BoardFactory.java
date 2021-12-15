@@ -7,29 +7,29 @@ public class BoardFactory {
     private static final Input playerInput = new Input();
     private static final Random pickRandom = new Random();
     private Display boardDisplay = new Display("board");
-
-
+    private Player player;
+    private Board board;
 
     public BoardFactory() {
-        
     }
 
     public void placeShips(Player player) {
+        this.player = player;
+        this.board = player.getBoard();
+        boardDisplay.dispplayBoard(board);
         for (ShipType oneShip : ShipType.values()) {
             Ship ship = new Ship(oneShip);
-            Square location = null;
             String placementType = playerInput.askForUser("Where do you want to place your " + oneShip + " ships:\n [1] Manually \n [2] Randomly");
             if (placementType.equals("1")) {
-                placeShipManually(oneShip, ship, player.getBoard());
+                placeShipManually(oneShip, ship);
             } else if (placementType.equals("2")) {
-                placeShipRandomly(oneShip, ship, player.getBoard());
+                placeShipRandomly(oneShip, ship);
             }
-            Display printBoard = new Display("board");
-            printBoard.dispplayBoard(board);
+            boardDisplay.dispplayBoard(board);
         }
     }
 
-    private void placeShipRandomly(ShipType oneShip, Ship ship, Board board) {
+    private void placeShipRandomly(ShipType oneShip, Ship ship) {
         int getShipDirection;
         String shipDirection;
         int row;
@@ -40,11 +40,11 @@ public class BoardFactory {
             row = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
             col = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
         }while (!(board.isPlacementOk(oneShip.getShipSize(), shipDirection, row, col)));
-        createShipLocations(shipDirection, oneShip.getShipSize(), row, col, ship, board);
+        createShipLocations(shipDirection, oneShip.getShipSize(), row, col, ship);
     }
 
 
-    private void placeShipManually(ShipType oneShip, Ship ship, Board board) {
+    private void placeShipManually(ShipType oneShip, Ship ship) {
         String direction;
         int row;
         int col;
@@ -57,10 +57,10 @@ public class BoardFactory {
                 System.out.println("Bad choice, you can not place ship there.\n Try again!");
             }
         }while (!(board.isPlacementOk(oneShip.getShipSize(), direction, row, col)));
-        createShipLocations(direction, oneShip.getShipSize(), row, col, ship, board);
+        createShipLocations(direction, oneShip.getShipSize(), row, col, ship);
         }
 
-    private void createShipLocations(String direction, int shipSize, int row, int col, Ship ship, Board board) {
+    private void createShipLocations(String direction, int shipSize, int row, int col, Ship ship) {
         for (int i = 0; i < shipSize; i++ ) {
             if (Objects.equals(direction, "h")) {
                 Square location = board.getSquare(row+i, col);
