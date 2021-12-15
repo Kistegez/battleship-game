@@ -32,6 +32,8 @@ public class BoardFactory {
             } else if (placementType.equals("2")) {
                 placeShipRandomly(oneShip, ship);
             }
+            Display printBoard = new Display("board");
+            printBoard.dispplayBoard(board);
         }
     }
 
@@ -68,14 +70,18 @@ public class BoardFactory {
     private void createShipLocations(String direction, int shipSize, int row, int col, Ship ship) {
         for (int i = 0; i < shipSize; i++ ) {
             if (Objects.equals(direction, "h")) {
-                Square location = new Square(row+i, col, SquareStatus.SHIP);
+                Square location = board.getSquare(row+i, col);
+                location.setStatus(SquareStatus.SHIP);
                 ship.setterShip(location);
+
             }
             else if (Objects.equals(direction, "v")) {
-                Square location = new Square(row, col+i, SquareStatus.SHIP);
+                Square location = board.getSquare(row, col+i);
+                location.setStatus(SquareStatus.SHIP);
                 ship.setterShip(location);
             }
         }
         player.addShipToPlayer(ship);
+
     }
 }
