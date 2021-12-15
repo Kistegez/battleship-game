@@ -25,12 +25,7 @@ public class BoardFactory {
             } else if (placementType.equals("2")) {
                 placeShipRandomly(oneShip, ship);
             }
-
-            ship.setterShip(location);
-            player.addShipToPlayer(ship);
-            //display
             boardDisplay.dispplayBoard(board);
-
         }
     }
 
@@ -80,6 +75,5 @@ public class BoardFactory {
             }
         }
         player.addShipToPlayer(ship);
-
     }
 }
