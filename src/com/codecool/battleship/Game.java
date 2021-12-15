@@ -20,8 +20,8 @@ public class Game {
         /*Boolean exit = false;
         Boolean newGame = false;*/
         do {
-
-
+            shootingPhase();
+            changePlayer();
         } while (enemyPlayer.checkAlive() /*&& exit == false && newGame == false*/);
     }
 
@@ -50,5 +50,9 @@ public class Game {
             boardFactory.placeShips(currentPlayer);
             changePlayer();
         }
+    }
+
+    private void shootingPhase(){
+        currentPlayer.shootingShip(enemyPlayer.getBoard());
     }
 }
