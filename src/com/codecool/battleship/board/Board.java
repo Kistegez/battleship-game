@@ -1,23 +1,25 @@
-package com.codecool.battleship;
+package com.codecool.battleship.board;
 
 import java.util.Objects;
 
 public class Board {
     Square[][] board;
-    int boardSize;
+    public int boardSize;
 
     public Board(int boardSize) {
         this.boardSize = boardSize;
         board = new Square[boardSize][boardSize];
         for (int row = 0; row < (boardSize) ; row++) {
             for (int col = 0; col < (boardSize); col++) {
-                Square square = new Square(row,col,SquareStatus.EMPTY);
+                Square square = new Square(row,col, SquareStatus.EMPTY);
                 board[row][col] = square;
             }
         }
     }
 
-    public Board(){}
+    public Board(){
+
+    }
 
     public Square [][] getBoard(){
         return board;

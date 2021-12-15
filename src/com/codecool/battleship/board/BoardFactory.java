@@ -1,4 +1,10 @@
-package com.codecool.battleship;
+package com.codecool.battleship.board;
+import com.codecool.battleship.player.Player;
+import com.codecool.battleship.player.Ship;
+import com.codecool.battleship.player.ShipType;
+import com.codecool.battleship.util.Display;
+import com.codecool.battleship.util.Input;
+
 import java.util.Objects;
 import java.util.Random;
 import java.util.ArrayList;

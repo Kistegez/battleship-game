@@ -1,5 +1,10 @@
 package com.codecool.battleship;
 
+import com.codecool.battleship.board.Board;
+import com.codecool.battleship.board.BoardFactory;
+import com.codecool.battleship.player.Player;
+import com.codecool.battleship.util.Input;
+
 public class Game {
     Player player1;
     Player player2;
