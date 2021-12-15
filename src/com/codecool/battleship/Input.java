@@ -69,8 +69,9 @@ public class Input {
             for (Character listLetter : abc) {
                 i++;
                 if (Character.toString(listLetter).equalsIgnoreCase(Character.toString(firstCoordinate)) ){
-                    coordinateList.add(i);
-                    coordinateList.add(y);
+
+                    coordinateList.add(i - 1);
+                    coordinateList.add(y - 1);
 
                     return coordinateList;
                 }
