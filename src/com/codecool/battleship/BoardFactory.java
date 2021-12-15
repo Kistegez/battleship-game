@@ -1,45 +1,40 @@
 package com.codecool.battleship;
+import java.util.Objects;
 import java.util.Random;
 import java.util.ArrayList;
 
 public class BoardFactory {
-    private final Board board;
-    private final Player player;
     private static final Input playerInput = new Input();
     private static final Random pickRandom = new Random();
     private Display boardDisplay = new Display("board");
+    private Player player;
+    private Board board;
 
-
-    public BoardFactory(Player player) {
-        String askForBoardSize = playerInput.askForUser("How big board do you want to play on?");
-        int boardSize = Integer.parseInt(askForBoardSize);
-        board = new Board(boardSize);
-        this.player = player;
-        player.setBoard(board);
-        Display printBoard = new Display("board");
-        printBoard.dispplayBoard(board);
-        placeShips();
+    public BoardFactory() {
     }
 
-    private void placeShips() {
+    public void placeShips(Player player) {
+        this.player = player;
+        this.board = player.getBoard();
+        boardDisplay.dispplayBoard(board);
         for (ShipType oneShip : ShipType.values()) {
             Ship ship = new Ship(oneShip);
-            Square location = null;
             String placementType = playerInput.askForUser("Where do you want to place your " + oneShip + " ships:\n [1] Manually \n [2] Randomly");
             if (placementType.equals("1")) {
-                location = placeShipManually(oneShip);
+                placeShipManually(oneShip, ship);
             } else if (placementType.equals("2")) {
-                location = placeShipRandomly(oneShip);
+                placeShipRandomly(oneShip, ship);
             }
+
             ship.setterShip(location);
             player.addShipToPlayer(ship);
             //display
-            Display printBoard = new Display("board");
-            printBoard.dispplayBoard(board);
+            boardDisplay.dispplayBoard(board);
+
         }
     }
 
-    private Square placeShipRandomly(ShipType oneShip) {
+    private void placeShipRandomly(ShipType oneShip, Ship ship) {
         int getShipDirection;
         String shipDirection;
         int row;
@@ -50,10 +45,11 @@ public class BoardFactory {
             row = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
             col = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
         }while (!(board.isPlacementOk(oneShip.getShipSize(), shipDirection, row, col)));
-        return new Square(row, col, SquareStatus.SHIP);
+        createShipLocations(shipDirection, oneShip.getShipSize(), row, col, ship);
     }
 
-    private Square placeShipManually(ShipType oneShip) {
+
+    private void placeShipManually(ShipType oneShip, Ship ship) {
         String direction;
         int row;
         int col;
@@ -66,7 +62,24 @@ public class BoardFactory {
                 System.out.println("Bad choice, you can not place ship there.\n Try again!");
             }
         }while (!(board.isPlacementOk(oneShip.getShipSize(), direction, row, col)));
-        return new Square(row, col, SquareStatus.SHIP);
+        createShipLocations(direction, oneShip.getShipSize(), row, col, ship);
         }
 
+    private void createShipLocations(String direction, int shipSize, int row, int col, Ship ship) {
+        for (int i = 0; i < shipSize; i++ ) {
+            if (Objects.equals(direction, "h")) {
+                Square location = board.getSquare(row+i, col);
+                location.setStatus(SquareStatus.SHIP);
+                ship.setterShip(location);
+
+            }
+            else if (Objects.equals(direction, "v")) {
+                Square location = board.getSquare(row, col+i);
+                location.setStatus(SquareStatus.SHIP);
+                ship.setterShip(location);
+            }
+        }
+        player.addShipToPlayer(ship);
+
     }
+}

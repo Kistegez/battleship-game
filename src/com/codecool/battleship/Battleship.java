@@ -27,15 +27,8 @@ public class Battleship {
                 case 1: //Start game.
                     playedGame = true;
                     System.out.println("Go go gooo!!!");
-
                     Game game = new Game();
-                    game.startGame();
-
-                    Display board = new Display("board");
-
-                    game.shootingGame();
-
-
+                    game.gameFlow();
                     break;
                 case 2: //Display high scores.
                     System.out.println("12314223 point");

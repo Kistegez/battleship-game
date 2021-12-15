@@ -14,4 +14,8 @@ public class Ship {
         this.locations.add(locations);
         locations.setStatus(SquareStatus.SHIP);
     }
+
+    public List<Square> getLocations() {
+        return locations;
+    }
 }
