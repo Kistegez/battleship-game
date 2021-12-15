@@ -30,7 +30,7 @@ main() {
         fatal "Couldn't compile files"
     fi
 
-    local jar_name=mainproduct.jar
+    local jar_name=battleship.jar
     jar cfm $jar_name ./META-INF/MANIFEST.MF -C $out_dir .
 }
 
