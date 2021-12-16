@@ -25,12 +25,22 @@ public class BoardFactory {
             if (player.getName().equals("Lil' AI")){
                 player.getPlacingCoordinate(oneShip, ship, board, player);
             }else{
-                String placementType = playerInput.askForUser(player.getName() +"\n Where do you want to place your " + oneShip + " ships:\n [1] Manually \n [2] Randomly");
-                if (placementType.equals("1")) {
-                    player.getPlacingCoordinate(oneShip, ship, board, player);
-                } else if (placementType.equals("2")) {
-                    randomPicker.getPlacingCoordinate(oneShip, ship, board, player);
-                }
+                boolean validation = false;
+                do{
+                    String placementType = playerInput.askForUser(player.getName() +"\n Where do you want to place your " + oneShip + " ships:\n [1] Manually \n [2] Randomly");
+                    if(placementType.equalsIgnoreCase("1") || placementType.equalsIgnoreCase("2")){
+                        validation = true;
+                        if (placementType.equals("1")) {
+                            player.getPlacingCoordinate(oneShip, ship, board, player);
+                        } else if (placementType.equals("2")) {
+                            randomPicker.getPlacingCoordinate(oneShip, ship, board, player);
+                        }
+                    }
+                     else {
+                        System.out.println("Invalid direction!");
+                    }
+                }while(validation == false);
+
             }
             ClearBoard.clearConsole();
             display.displayBoard(board,"place");
