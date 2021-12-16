@@ -1,5 +1,6 @@
 package com.codecool.battleship.player;
 
+import com.codecool.battleship.ClearBoard;
 import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
@@ -43,9 +44,11 @@ public class ComputerPlayer extends Player{
         Square location = enemyBoard.getSquare(row, col);
         if (location.getStatus() == SquareStatus.SHIP){
             location.setStatus(SquareStatus.HIT);
+            ClearBoard.clearConsole();
             System.out.println("So Sorry but Lil' AI HIT your ship");
         }else{
             location.setStatus(SquareStatus.MISSED);
+            ClearBoard.clearConsole();
             System.out.println("Luckily Lil' AI missed your ship");
         }
     }

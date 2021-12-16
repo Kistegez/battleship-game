@@ -1,5 +1,6 @@
 package com.codecool.battleship.util;
 
+import com.codecool.battleship.ClearBoard;
 import com.codecool.battleship.board.*;
 
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
 package com.codecool.battleship.board;
 
+import com.codecool.battleship.ClearBoard;
 import com.codecool.battleship.player.*;
 import com.codecool.battleship.util.*;
 import java.util.Objects;
@@ -31,6 +32,7 @@ public class BoardFactory {
                     randomPicker.getPlacingCoordinate(oneShip, ship, board, player);
                 }
             }
+            ClearBoard.clearConsole();
             display.dispplayBoard(board);
         }
     }

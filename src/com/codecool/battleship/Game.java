@@ -14,6 +14,7 @@ public class Game {
     Player enemyPlayer;
 
 
+
     public Game(String mode) {
         this.player1 = new HumanPlayer("Vincent Vega");
         this.player2 = (mode.equals("PvsP")) ? new HumanPlayer("Marsellus Wallase") : new ComputerPlayer("Lil' AI");
@@ -40,6 +41,7 @@ public class Game {
     }
 
     private void createBoard() {
+        ClearBoard.clearConsole();
         boolean input = false;
         do {
             Input playerInput = new Input();
@@ -79,9 +81,11 @@ public class Game {
             boardFactory.placeShips(currentPlayer, new ComputerPlayer("randomPicker"));
             changePlayer();
         }
+        ClearBoard.clearConsole();
     }
 
     private void shootingPhase(){
+
         currentPlayer.shootingShip(enemyPlayer.getBoard(), currentPlayer);
     }
 

@@ -1,5 +1,6 @@
 package com.codecool.battleship.player;
 
+import com.codecool.battleship.ClearBoard;
 import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.BoardFactory;
 import com.codecool.battleship.board.Square;
@@ -44,9 +45,11 @@ public class HumanPlayer extends Player{
         Square location = enemyBoard.getSquare(row, col);
         if (location.getStatus() == SquareStatus.SHIP){
             location.setStatus(SquareStatus.HIT);
+            ClearBoard.clearConsole();
             System.out.println("Congrats you HIT a ship");
         }else{
             location.setStatus(SquareStatus.MISSED);
+            ClearBoard.clearConsole();
             System.out.println("So sorry but you missed this shoot");
         }
     }
