@@ -5,6 +5,7 @@ import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ComputerPlayer extends Player{
@@ -45,10 +46,14 @@ public class ComputerPlayer extends Player{
             location.setStatus(SquareStatus.HIT);
             ClearBoard.clearConsole();
             System.out.println("So Sorry but Lil' AI HIT your ship");
+            boardDisplay.displayBoard(enemyBoard,"shooting");
+            boardDisplay.wait(3000);
         }else{
             location.setStatus(SquareStatus.MISSED);
             ClearBoard.clearConsole();
             System.out.println("Luckily Lil' AI missed your ship");
+            boardDisplay.displayBoard(enemyBoard,"shooting");
+            boardDisplay.wait(3000);
         }
     }
 

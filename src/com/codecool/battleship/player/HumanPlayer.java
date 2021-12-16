@@ -45,10 +45,16 @@ public class HumanPlayer extends Player{
             location.setStatus(SquareStatus.HIT);
             ClearBoard.clearConsole();
             System.out.println("Congrats you HIT a ship");
+            boardDisplay.displayBoard(enemyBoard,"shooting");
+            boardDisplay.wait(3000);
+
         }else{
             location.setStatus(SquareStatus.MISSED);
             ClearBoard.clearConsole();
             System.out.println("So sorry but you missed this shoot");
+            boardDisplay.displayBoard(enemyBoard,"shooting");
+            boardDisplay.wait(3000);
+
         }
     }
     public ArrayList getShootCoordinate(Player currentPlayer, Board board){
