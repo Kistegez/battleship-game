@@ -1,4 +1,6 @@
 package com.codecool.battleship.util;
+import com.codecool.battleship.board.Board;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Scanner;
@@ -32,58 +34,65 @@ public class Input {
     }
 
 
-    public ArrayList coordinateInputs(){
+    public ArrayList coordinateInputs(Board board){
         ArrayList<Integer> coordinateList = new ArrayList<>();
         ArrayList<Character> abc = new ArrayList<>();
-
-        Scanner coordinateInput = new Scanner(System.in);
-        System.out.println("Coordinate input (A1 format):");
-        String coordinate = coordinateInput.nextLine();
-
-        char firstCoordinate = coordinate.charAt(0);
-        int secoundCoordinate = coordinate.charAt(1);
-        int y = secoundCoordinate - 48;
-
-        if (coordinate.length() == 3){
-            try{
-                char tenDigitsNumberSecoundHalf = coordinate.charAt(2);
-                String number2 = String.valueOf(tenDigitsNumberSecoundHalf);
-                Integer.parseInt(number2);
-                String secoundCoordinate2 = secoundCoordinate - 48 + String.valueOf(tenDigitsNumberSecoundHalf - 48);
-                y = Integer.parseInt(secoundCoordinate2);
-            }
-            catch (Exception e){
-                System.out.println("Erreoroereeelooooll");
-            }
-        }
-        else {
-        }
 
         char c;
         for(c = 'A'; c <= 'Z'; ++c) {
             abc.add(c);
         }
 
-        try{
-            int i = 0;
-            for (Character listLetter : abc) {
-                i++;
-                if (Character.toString(listLetter).equalsIgnoreCase(Character.toString(firstCoordinate)) ){
+        boolean coordinateValidate = false;
 
-                    coordinateList.add(i - 1);
-                    coordinateList.add(y - 1);
+        do{
+            String errorMessage = "";
+            try {
+                String coordinate = this.validateCoordinateInput();
 
-                    return coordinateList;
+                char firstCoordinate = coordinate.charAt(0);
+                int secoundCoordinate = coordinate.charAt(1);
+                int y = secoundCoordinate - 48;
+                if(coordinate.length() == 2 || coordinate.length() == 3){
+                    if (coordinate.length() == 3){
+                        try{
+                            char tenDigitsNumberSecoundHalf = coordinate.charAt(2);
+                            String number2 = String.valueOf(tenDigitsNumberSecoundHalf);
+                            Integer.parseInt(number2);
+                            String secoundCoordinate2 = (secoundCoordinate - 48) + String.valueOf(tenDigitsNumberSecoundHalf - 48);
+                            y = Integer.parseInt(secoundCoordinate2);
+                        }
+                        catch (Exception e){
+                            errorMessage = "Invalid input, try again!(1)";
+                        }
+                    }
+                    int x = -1;
+                    try{
+                        for (Character listLetter : abc) {
+                            x++;
+                            if (Character.toString(listLetter).equalsIgnoreCase(Character.toString(firstCoordinate)) && board.boardSize >= x && board.boardSize >= y){
+
+                                coordinateList.add(x);
+                                coordinateList.add(y - 1);
+                                coordinateValidate = true;
+                                return coordinateList;
+                            }
+                            else {
+                                errorMessage = "Invalid input (2)";
+                            }
+                        }
+                    }
+                    catch (Exception e){
+                        System.out.println("Invalid input, try again!(3)");
+                    }
                 }
-                else {
-                    System.out.println("INVALID!!");
-                }
+            } catch (Error e){
+                System.out.println("Invalid input (5)");
             }
-        }
-        catch (Exception e){
+            System.out.println(errorMessage);
+        }while (coordinateValidate == false);
 
-        }
-        return  coordinateList;
+        return coordinateList;
     }
 
     public String askForUser(String question){
@@ -91,5 +100,21 @@ public class Input {
         return inputScan.nextLine();
     }
 
+    public String validateCoordinateInput(){
+        boolean validation = false;
+        do{
+            String coordinate = this.askForUser("Coordinate input (A1 format):");
+            if (coordinate.length() < 4 && coordinate.length() > 1){
+                validation = true;
+                return coordinate;
+            }
+            else {
+                System.out.println("Invalid coordinate length!");
+            }
+        }while(validation == false);
+        return null;
+    }
 }
+
+
 

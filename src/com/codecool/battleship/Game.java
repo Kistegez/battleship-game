@@ -40,6 +40,29 @@ public class Game {
     }
 
     private void createBoard() {
+        boolean input = false;
+        do {
+            Input playerInput = new Input();
+            String askForBoardSize = playerInput.askForUser("How big board do you want to play on? (10 - 26)");
+            try {
+                int boardSize = Integer.parseInt(askForBoardSize);
+                for (int i = 0; i < 2; i++) {
+                    if (boardSize < 27 && boardSize > 9) {
+                        Board board = new Board(boardSize);
+                        currentPlayer.setBoard(board);
+                        changePlayer();
+                        input = true;
+                    } else {
+                        System.out.print("Invalid board size." + "\n");
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input!");
+            }
+        } while (input == false);
+    }
+
+    /*private void createBoard() {
         Input playerInput = new Input();
         String askForBoardSize = playerInput.askForUser("How big board do you want to play on?");
         int boardSize = Integer.parseInt(askForBoardSize);
@@ -48,7 +71,7 @@ public class Game {
             currentPlayer.setBoard(board);
             changePlayer();
         }
-    }
+    } */
 
     private void placeShips() {
         for (int i = 0; i < 2; i++) {

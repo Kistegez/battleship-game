@@ -23,7 +23,7 @@ public class HumanPlayer extends Player{
         int col;
         do {
             Input playerInput = new Input();
-            ArrayList coordinates = playerInput.coordinateInputs();
+            ArrayList coordinates = playerInput.coordinateInputs(board);
             row = (int) coordinates.get(0);
             col = (int) coordinates.get(1);
             direction = playerInput.askForUser("What direction do you want to place it: \n [v] vertical \n [h] horizontal");
@@ -38,7 +38,7 @@ public class HumanPlayer extends Player{
     @Override
     public void shootingShip(Board enemyBoard, Player currentPlayer) {
         boardDisplay.dispplayBoard(enemyBoard);
-        ArrayList coordinates = getShootCoordinate(currentPlayer);
+        ArrayList coordinates = getShootCoordinate(currentPlayer, enemyBoard);
         int row = (int) coordinates.get(0);
         int col = (int) coordinates.get(1);
         Square location = enemyBoard.getSquare(row, col);
@@ -50,10 +50,10 @@ public class HumanPlayer extends Player{
             System.out.println("So sorry but you missed this shoot");
         }
     }
-    public ArrayList getShootCoordinate(Player currentPlayer){
+    public ArrayList getShootCoordinate(Player currentPlayer, Board board){
         Input shootingCoordinate = new Input();
         System.out.println(currentPlayer.getName() + " Choose a coordinate");
-        return shootingCoordinate.coordinateInputs();
+        return shootingCoordinate.coordinateInputs(board);
     }
 }
 
