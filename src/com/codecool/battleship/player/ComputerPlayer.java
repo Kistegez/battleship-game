@@ -45,13 +45,13 @@ public class ComputerPlayer extends Player{
         if (location.getStatus() == SquareStatus.SHIP){
             location.setStatus(SquareStatus.HIT);
             ClearBoard.clearConsole();
-            System.out.println("So Sorry but Lil' AI HIT your ship");
+            System.out.println("BIATCH Lil' AI HIT your ship");
             boardDisplay.displayBoard(enemyBoard,"shooting");
             boardDisplay.wait(3000);
         }else{
             location.setStatus(SquareStatus.MISSED);
             ClearBoard.clearConsole();
-            System.out.println("Luckily Lil' AI missed your ship");
+            System.out.println("Lil' AI MISSED your ship this time");
             boardDisplay.displayBoard(enemyBoard,"shooting");
             boardDisplay.wait(3000);
         }

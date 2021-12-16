@@ -28,18 +28,18 @@ public class Battleship {
             switch (option){
                 case 1: //Player vs. Player.
                     playedGame = true;
-                    System.out.println("Let's see who is better!");
+                    System.out.println("One of us is not a stripper.\n One of us is a lyin' b*tch \n who's f***in' Montello, and now she's f***in' all of us!");
                     game = new Game("PvsP");
                     game.gameFlow();
                     break;
                 case 2: //Player vs AI.
                     playedGame = true;
-                    System.out.println("Good luck");
+                    System.out.println("Prepare to meet your maker - maybe he'll know who the F*** you are!");
                     game = new Game("AI");
                     game.gameFlow();
                     break;
                 case 3: //Exit.
-                    System.out.println("Good by!");
+                    System.out.println("I just crapped myself!");
                     isRunning = false;
                     break;
             }

@@ -44,14 +44,14 @@ public class HumanPlayer extends Player{
         if (location.getStatus() == SquareStatus.SHIP){
             location.setStatus(SquareStatus.HIT);
             ClearBoard.clearConsole();
-            System.out.println("Congrats you HIT a ship");
+            System.out.println("Vincent... We happy?! YES WE HAPPY");
             boardDisplay.displayBoard(enemyBoard,"shooting");
             boardDisplay.wait(3000);
 
         }else{
             location.setStatus(SquareStatus.MISSED);
             ClearBoard.clearConsole();
-            System.out.println("So sorry but you missed this shoot");
+            System.out.println("Vincent... We happy?!  NOPE, NOT THIS TIME ");
             boardDisplay.displayBoard(enemyBoard,"shooting");
             boardDisplay.wait(3000);
 
@@ -59,7 +59,7 @@ public class HumanPlayer extends Player{
     }
     public ArrayList getShootCoordinate(Player currentPlayer, Board board){
         Input shootingCoordinate = new Input();
-        System.out.println(currentPlayer.getName() + " Choose a coordinate");
+        System.out.println(currentPlayer.getName() + " Let's do some BANG BANG");
         return shootingCoordinate.coordinateInputs(board);
     }
 }

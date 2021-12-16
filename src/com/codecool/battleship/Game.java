@@ -16,8 +16,8 @@ public class Game {
 
 
     public Game(String mode) {
-        this.player1 = new HumanPlayer("Vincent Vega");
-        this.player2 = (mode.equals("PvsP")) ? new HumanPlayer("Marsellus Wallase") : new ComputerPlayer("Lil' AI");
+        this.player1 = new HumanPlayer("Marsellus Wallace ");
+        this.player2 = (mode.equals("PvsP")) ? new HumanPlayer("Vincent Vega") : new ComputerPlayer("Lil' AI");
         this.currentPlayer = player1;
         this.enemyPlayer = player2;
     }
