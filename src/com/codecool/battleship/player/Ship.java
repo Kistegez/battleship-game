@@ -1,7 +1,7 @@
 package com.codecool.battleship.player;
+
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
-
 import java.util.ArrayList;
 import java.util.List;
 

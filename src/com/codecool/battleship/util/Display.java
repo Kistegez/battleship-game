@@ -30,9 +30,9 @@ public class Display {
                 System.out.println(" [1] Try again");
             }
             else {
-                System.out.println(" [1] Start game  ");
+                System.out.println(" [1] Player vs. Player  ");
             }
-            System.out.println(" [2] High scores ");
+            System.out.println(" [2] Player vs. Lil' AI ");
             System.out.println(" [3] Exit");
         }
     }
