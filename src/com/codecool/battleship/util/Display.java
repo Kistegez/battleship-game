@@ -4,6 +4,7 @@ import com.codecool.battleship.ClearBoard;
 import com.codecool.battleship.board.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Display {
 
@@ -39,7 +40,7 @@ public class Display {
     }
 
 
-    public void dispplayBoard(Board board){
+    public void dispplayBoard(Board board, String mode){
 
         ArrayList<Character> abc = new ArrayList<>();
         char c;
@@ -60,9 +61,22 @@ public class Display {
         for (int i = 0; i < board.boardSize; i++) {
             System.out.print(abc.get(i));
             for (int j = 0; j < board.boardSize; j++) {
-                String slot = board.getSquare(i, j).getStatus().getCharacter();
-                System.out.print("\t");
-                System.out.print(slot);
+                if (Objects.equals(mode, "shooting")) {
+                    String slot = board.getSquare(i, j).getStatus().getCharacter();
+                    if (board.getSquare(i,j).getStatus() == SquareStatus.SHIP) {
+                        System.out.print("\t");
+                        System.out.print(SquareStatus.EMPTY.getCharacter());
+                    }
+                    else {
+                        System.out.print("\t");
+                        System.out.print(slot);
+                    }
+                }
+                else {
+                    String slot = board.getSquare(i, j).getStatus().getCharacter();
+                    System.out.print("\t");
+                    System.out.print(slot);
+                }
             }
 
             System.out.println("\n");

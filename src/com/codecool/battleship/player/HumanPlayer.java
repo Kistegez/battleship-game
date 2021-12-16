@@ -38,7 +38,7 @@ public class HumanPlayer extends Player{
 
     @Override
     public void shootingShip(Board enemyBoard, Player currentPlayer) {
-        boardDisplay.dispplayBoard(enemyBoard);
+        boardDisplay.dispplayBoard(enemyBoard,"shooting");
         ArrayList coordinates = getShootCoordinate(currentPlayer, enemyBoard);
         int row = (int) coordinates.get(0);
         int col = (int) coordinates.get(1);
