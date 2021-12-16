@@ -35,26 +35,32 @@ public class HumanPlayer extends Player{
 
 
     @Override
-    public void shootingShip(Board enemyBoard, Player currentPlayer) {
+    public void shootingShip(Board enemyBoard, Player currentPlayer, Player enemyPlayer) {
         boardDisplay.displayBoard(enemyBoard,"shooting");
         ArrayList coordinates = getShootCoordinate(currentPlayer, enemyBoard);
-        int row = (int) coordinates.get(0);
-        int col = (int) coordinates.get(1);
-        Square location = enemyBoard.getSquare(row, col);
-        if (location.getStatus() == SquareStatus.SHIP){
-            location.setStatus(SquareStatus.HIT);
-            ClearBoard.clearConsole();
-            System.out.println("Vincent... We happy?! YES WE HAPPY");
-            boardDisplay.displayBoard(enemyBoard,"shooting");
+        if ((int) coordinates.get(0) == 42) {
+            enemyPlayer.cheatMode();
+            boardDisplay.displayBoard(enemyBoard, "shooting");
             boardDisplay.wait(3000);
+        }else {
+            int row = (int) coordinates.get(0);
+            int col = (int) coordinates.get(1);
+            Square location = enemyBoard.getSquare(row, col);
+            if (location.getStatus() == SquareStatus.SHIP) {
+                location.setStatus(SquareStatus.HIT);
+                ClearBoard.clearConsole();
+                System.out.println("Vincent... We happy?! YES WE HAPPY");
+                boardDisplay.displayBoard(enemyBoard, "shooting");
+                boardDisplay.wait(3000);
 
-        }else{
-            location.setStatus(SquareStatus.MISSED);
-            ClearBoard.clearConsole();
-            System.out.println("Vincent... We happy?!  NOPE, NOT THIS TIME ");
-            boardDisplay.displayBoard(enemyBoard,"shooting");
-            boardDisplay.wait(3000);
+            } else {
+                location.setStatus(SquareStatus.MISSED);
+                ClearBoard.clearConsole();
+                System.out.println("Vincent... We happy?!  NOPE, NOT THIS TIME ");
+                boardDisplay.displayBoard(enemyBoard, "shooting");
+                boardDisplay.wait(3000);
 
+            }
         }
     }
     public ArrayList getShootCoordinate(Player currentPlayer, Board board){

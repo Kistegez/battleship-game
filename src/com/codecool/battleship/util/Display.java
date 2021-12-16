@@ -27,13 +27,7 @@ public class Display {
             System.out.println("|----------------------|");
             System.out.println("| BATTLESHIP GAME MENU |");
             System.out.println("|----------------------|");
-
-            if (this.gamed){
-                System.out.println(" [1] Try again");
-            }
-            else {
-                System.out.println(" [1] Marsellus Wallace vs. Vincent Vega ");
-            }
+            System.out.println(" [1] Marsellus Wallace vs. Vincent Vega ");
             System.out.println(" [2] Marsellus Wallace vs. Lil' AI");
             System.out.println(" [3] Exit");
         }

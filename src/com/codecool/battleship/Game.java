@@ -18,22 +18,21 @@ public class Game {
     public Game(String mode) {
         this.player1 = new HumanPlayer("Marsellus Wallace ");
         this.player2 = (mode.equals("PvsP")) ? new HumanPlayer("Vincent Vega") : new ComputerPlayer("Lil' AI");
-        this.currentPlayer = player1;
-        this.enemyPlayer = player2;
+        this.currentPlayer = player2;
+        this.enemyPlayer = player1;
     }
 
     public void gameFlow() {
         createBoard();
         placeShips();
-        //Boolean exit = false;
         do {
-            shootingPhase();
             changePlayer();
-        } while (enemyPlayer.checkAlive() /*&& exit == false*/);
+            shootingPhase();
+        } while (enemyPlayer.checkAlive());
+        printTheWinner();
+
+
     }
-
-
-
 
     private void changePlayer() {
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
@@ -76,7 +75,12 @@ public class Game {
 
     private void shootingPhase(){
 
-        currentPlayer.shootingShip(enemyPlayer.getBoard(), currentPlayer);
+        currentPlayer.shootingShip(enemyPlayer.getBoard(), currentPlayer, enemyPlayer);
+    }
+
+    private void printTheWinner() {
+        ClearBoard.clearConsole();
+        System.out.println(currentPlayer.getName() + "you lucky bastard! \n YOU WON THIS GAME!");
     }
 
 }

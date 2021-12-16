@@ -28,7 +28,7 @@ public class BoardFactory {
                 boolean validation = false;
                 do{
                     String placementType = playerInput.askForUser(player.getName() +"\n How do you want to place your " + oneShip + " ships:\n [1] Manually \n [2] Randomly");
-                    if(placementType.equalsIgnoreCase("1") || placementType.equalsIgnoreCase("2")){
+                    if(placementType.equalsIgnoreCase("1") || placementType.equalsIgnoreCase("2")) {
                         validation = true;
                         if (placementType.equals("1")) {
                             player.getPlacingCoordinate(oneShip, ship, board, player);

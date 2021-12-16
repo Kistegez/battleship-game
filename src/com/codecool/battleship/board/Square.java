@@ -20,6 +20,13 @@ public class Square {
         this.status = status;
     }
 
+    public int getXCoordinate(){
+        return xCoordinate;
+    }
+
+    public int getYCoordinate(){
+        return yCoordinate;
+    }
 
 
 }

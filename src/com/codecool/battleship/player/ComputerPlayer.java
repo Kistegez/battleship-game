@@ -37,7 +37,7 @@ public class ComputerPlayer extends Player{
     }
 
     @Override
-    public void shootingShip(Board enemyBoard, Player currentPlayer) {
+    public void shootingShip(Board enemyBoard, Player currentPlayer, Player enemyPlayer) {
         boardDisplay.displayBoard(enemyBoard,"shooting");
         int row = pickRandom.nextInt(enemyBoard.boardSize);
         int col = pickRandom.nextInt(enemyBoard.boardSize);
