@@ -59,7 +59,7 @@ public class Game {
     }
 
     private void shootingPhase(){
-        currentPlayer.shootingShip(enemyPlayer.getBoard());
+        currentPlayer.shootingShip(enemyPlayer.getBoard(), currentPlayer);
     }
 
 }

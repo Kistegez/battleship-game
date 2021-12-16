@@ -10,7 +10,8 @@ public abstract class Player {
     private final String name;
     private final List<Ship> shipList = new ArrayList<>();
     private Board board;
-    BoardFactory boardFactory = new BoardFactory();
+    public BoardFactory boardFactory = new BoardFactory();
+    public Display boardDisplay = new Display("board");
 
     public Player(String player) {
         this.name = player;
@@ -43,7 +44,7 @@ public abstract class Player {
         return false;
     }
 
-    public abstract void chooseShipCoordinate(ShipType size, Ship ship, Board board, Player player);
+    public abstract void getPlacingCoordinate(ShipType size, Ship ship, Board board, Player player);
 
-    public abstract void shootingShip(Board enemyBoard);
+    public abstract void shootingShip(Board enemyBoard, Player currentPlayer);
 }

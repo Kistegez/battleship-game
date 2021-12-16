@@ -1,6 +1,10 @@
 package com.codecool.battleship.player;
 
 import com.codecool.battleship.board.Board;
+import com.codecool.battleship.board.Square;
+import com.codecool.battleship.board.SquareStatus;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ComputerPlayer extends Player{
@@ -11,7 +15,7 @@ public class ComputerPlayer extends Player{
     }
 
     @Override
-    public void chooseShipCoordinate(ShipType oneShip, Ship ship, Board board, Player player) {
+    public void getPlacingCoordinate(ShipType oneShip, Ship ship, Board board, Player player) {
         int getShipDirection;
         String shipDirection;
         int row;
@@ -32,9 +36,18 @@ public class ComputerPlayer extends Player{
     }
 
     @Override
-    public void shootingShip(Board enemyBoard) {
-
+    public void shootingShip(Board enemyBoard, Player currentPlayer) {
+        boardDisplay.dispplayBoard(enemyBoard);
+        int row = pickRandom.nextInt(enemyBoard.boardSize);
+        int col = pickRandom.nextInt(enemyBoard.boardSize);
+        Square location = enemyBoard.getSquare(row, col);
+        if (location.getStatus() == SquareStatus.SHIP){
+            location.setStatus(SquareStatus.HIT);
+            System.out.println("So Sorry but Lil' AI HIT your ship");
+        }else{
+            location.setStatus(SquareStatus.MISSED);
+            System.out.println("Luckily Lil' AI missed your ship");
+        }
     }
-
 
 }

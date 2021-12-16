@@ -10,14 +10,14 @@ import com.codecool.battleship.util.Input;
 import java.util.ArrayList;
 
 public class HumanPlayer extends Player{
-    private Display boardDisplay = new Display("board");
+
 
     public HumanPlayer(String player) {
         super(player);
     }
 
     @Override
-    public void chooseShipCoordinate(ShipType oneShip, Ship ship, Board board, Player player) {
+    public void getPlacingCoordinate(ShipType oneShip, Ship ship, Board board, Player player) {
         String direction;
         int row;
         int col;
@@ -36,9 +36,9 @@ public class HumanPlayer extends Player{
 
 
     @Override
-    public void shootingShip(Board enemyBoard) {
+    public void shootingShip(Board enemyBoard, Player currentPlayer) {
         boardDisplay.dispplayBoard(enemyBoard);
-        ArrayList coordinates = getCoordinate();
+        ArrayList coordinates = getShootCoordinate(currentPlayer);
         int row = (int) coordinates.get(0);
         int col = (int) coordinates.get(1);
         Square location = enemyBoard.getSquare(row, col);
@@ -50,9 +50,9 @@ public class HumanPlayer extends Player{
             System.out.println("So sorry but you missed this shoot");
         }
     }
-    public ArrayList getCoordinate(){
+    public ArrayList getShootCoordinate(Player currentPlayer){
         Input shootingCoordinate = new Input();
-        System.out.println("Choose a coordinate");
+        System.out.println(currentPlayer.getName() + " Choose a coordinate");
         return shootingCoordinate.coordinateInputs();
     }
 }
