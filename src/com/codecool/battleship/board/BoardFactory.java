@@ -1,5 +1,6 @@
 package com.codecool.battleship.board;
 
+import com.codecool.battleship.Game;
 import com.codecool.battleship.player.*;
 import com.codecool.battleship.util.*;
 import java.util.Objects;
@@ -14,7 +15,7 @@ public class BoardFactory {
     public BoardFactory() {
     }
 
-    public void placeShips(Player player) {
+    public void placeShips(Player player, Player randomPicker) {
         this.player = player;
         Display display = new Display("board");
         this.board = player.getBoard();
@@ -28,30 +29,11 @@ public class BoardFactory {
                 if (placementType.equals("1")) {
                     player.chooseShipCoordinate(oneShip, ship, board, player);
                 } else if (placementType.equals("2")) {
-                    placeShipRandomly(oneShip, ship);
+                    randomPicker.chooseShipCoordinate(oneShip, ship, board, player);
                 }
             }
             display.dispplayBoard(board);
         }
-    }
-
-    private void placeShipRandomly(ShipType oneShip, Ship ship) {
-        int getShipDirection;
-        String shipDirection;
-        int row;
-        int col;
-        do {
-            getShipDirection = pickRandom.nextInt(2);
-            shipDirection = (getShipDirection == 1) ? "h" : "v";
-            if (shipDirection.equals("h")){
-                row = pickRandom.nextInt(board.getBoard().length);
-                col = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
-            }else {
-                row = pickRandom.nextInt(board.getBoard().length - oneShip.getShipSize());
-                col = pickRandom.nextInt(board.getBoard().length);
-            }
-        }while (!(board.isPlacementOk(oneShip.getShipSize(), shipDirection, row, col)));
-        createShipLocations(shipDirection, oneShip.getShipSize(), row, col, ship, board, player);
     }
 
 

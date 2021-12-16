@@ -53,7 +53,7 @@ public class Game {
     private void placeShips() {
         for (int i = 0; i < 2; i++) {
             BoardFactory boardFactory = new BoardFactory();
-            boardFactory.placeShips(currentPlayer);
+            boardFactory.placeShips(currentPlayer, new ComputerPlayer("randomPicker"));
             changePlayer();
         }
     }
@@ -61,4 +61,5 @@ public class Game {
     private void shootingPhase(){
         currentPlayer.shootingShip(enemyPlayer.getBoard());
     }
+
 }
