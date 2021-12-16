@@ -1,20 +1,17 @@
 package com.codecool.battleship.player;
 
-import com.codecool.battleship.board.Board;
-import com.codecool.battleship.board.Square;
-import com.codecool.battleship.board.SquareStatus;
-import com.codecool.battleship.util.Display;
-import com.codecool.battleship.util.Input;
-
+import com.codecool.battleship.board.*;
+import com.codecool.battleship.util.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Player {
+public abstract class Player {
     private final String name;
     private final List<Ship> shipList = new ArrayList<>();
     private Board board;
-    private Display boardDisplay = new Display("board");
+    public BoardFactory boardFactory = new BoardFactory();
+    public Display boardDisplay = new Display("board");
 
     public Player(String player) {
         this.name = player;
@@ -47,23 +44,7 @@ public class Player {
         return false;
     }
 
-    public void shootingShip(Board enemyBoard) {
-        boardDisplay.dispplayBoard(enemyBoard);
-        ArrayList coordinates = getCoordinate();
-        int row = (int) coordinates.get(0);
-        int col = (int) coordinates.get(1);
-        Square location = enemyBoard.getSquare(row, col);
-        if (location.getStatus() == SquareStatus.SHIP){
-            location.setStatus(SquareStatus.HIT);
-            System.out.println("Congrats you HIT a ship");
-        }else{
-            location.setStatus(SquareStatus.MISSED);
-            System.out.println("So sorry but you missed this shoot");
-        }
-    }
-    public ArrayList getCoordinate(){
-        Input shootingCoordinate = new Input();
-        System.out.println("Choose a coordinate");
-        return shootingCoordinate.coordinateInputs();
-    }
+    public abstract void getPlacingCoordinate(ShipType size, Ship ship, Board board, Player player);
+
+    public abstract void shootingShip(Board enemyBoard, Player currentPlayer);
 }

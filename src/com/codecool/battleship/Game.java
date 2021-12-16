@@ -2,6 +2,8 @@ package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.BoardFactory;
+import com.codecool.battleship.player.ComputerPlayer;
+import com.codecool.battleship.player.HumanPlayer;
 import com.codecool.battleship.player.Player;
 import com.codecool.battleship.util.Input;
 
@@ -12,9 +14,9 @@ public class Game {
     Player enemyPlayer;
 
 
-    public Game() {
-        this.player1 = new Player("player UNO");
-        this.player2 = new Player("player DOS");
+    public Game(String mode) {
+        this.player1 = new HumanPlayer("player UNO");
+        this.player2 = (mode.equals("PvsP")) ? new HumanPlayer("player DOS") : new ComputerPlayer("Lil' AI");
         this.currentPlayer = player1;
         this.enemyPlayer = player2;
     }
@@ -22,12 +24,11 @@ public class Game {
     public void gameFlow() {
         createBoard();
         placeShips();
-        /*Boolean exit = false;
-        Boolean newGame = false;*/
+        //Boolean exit = false;
         do {
             shootingPhase();
             changePlayer();
-        } while (enemyPlayer.checkAlive() /*&& exit == false && newGame == false*/);
+        } while (enemyPlayer.checkAlive() /*&& exit == false*/);
     }
 
 
@@ -52,12 +53,13 @@ public class Game {
     private void placeShips() {
         for (int i = 0; i < 2; i++) {
             BoardFactory boardFactory = new BoardFactory();
-            boardFactory.placeShips(currentPlayer);
+            boardFactory.placeShips(currentPlayer, new ComputerPlayer("randomPicker"));
             changePlayer();
         }
     }
 
     private void shootingPhase(){
-        currentPlayer.shootingShip(enemyPlayer.getBoard());
+        currentPlayer.shootingShip(enemyPlayer.getBoard(), currentPlayer);
     }
+
 }
