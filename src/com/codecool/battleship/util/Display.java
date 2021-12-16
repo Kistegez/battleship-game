@@ -40,7 +40,7 @@ public class Display {
     }
 
 
-    public void dispplayBoard(Board board, String mode){
+    public void displayBoard(Board board, String mode){
 
         ArrayList<Character> abc = new ArrayList<>();
         char c;

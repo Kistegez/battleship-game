@@ -19,7 +19,7 @@ public class BoardFactory {
         this.player = player;
         Display display = new Display("board");
         this.board = player.getBoard();
-        display.dispplayBoard(board, "place");
+        display.displayBoard(board, "place");
         for (ShipType oneShip : ShipType.values()) {
             Ship ship = new Ship(oneShip);
             if (player.getName().equals("Lil' AI")){
@@ -33,7 +33,7 @@ public class BoardFactory {
                 }
             }
             ClearBoard.clearConsole();
-            display.dispplayBoard(board,"place");
+            display.displayBoard(board,"place");
         }
     }
 

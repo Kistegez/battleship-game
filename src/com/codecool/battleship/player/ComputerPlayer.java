@@ -5,7 +5,6 @@ import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class ComputerPlayer extends Player{
@@ -38,7 +37,7 @@ public class ComputerPlayer extends Player{
 
     @Override
     public void shootingShip(Board enemyBoard, Player currentPlayer) {
-        boardDisplay.dispplayBoard(enemyBoard,"shooting");
+        boardDisplay.displayBoard(enemyBoard,"shooting");
         int row = pickRandom.nextInt(enemyBoard.boardSize);
         int col = pickRandom.nextInt(enemyBoard.boardSize);
         Square location = enemyBoard.getSquare(row, col);

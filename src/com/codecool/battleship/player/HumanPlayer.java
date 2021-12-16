@@ -2,10 +2,8 @@ package com.codecool.battleship.player;
 
 import com.codecool.battleship.ClearBoard;
 import com.codecool.battleship.board.Board;
-import com.codecool.battleship.board.BoardFactory;
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
-import com.codecool.battleship.util.Display;
 import com.codecool.battleship.util.Input;
 
 import java.util.ArrayList;
@@ -38,7 +36,7 @@ public class HumanPlayer extends Player{
 
     @Override
     public void shootingShip(Board enemyBoard, Player currentPlayer) {
-        boardDisplay.dispplayBoard(enemyBoard,"shooting");
+        boardDisplay.displayBoard(enemyBoard,"shooting");
         ArrayList coordinates = getShootCoordinate(currentPlayer, enemyBoard);
         int row = (int) coordinates.get(0);
         int col = (int) coordinates.get(1);
