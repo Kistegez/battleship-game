@@ -17,10 +17,6 @@ public class Board {
         }
     }
 
-    public Board(){
-
-    }
-
     public Square [][] getBoard(){
         return board;
     }
