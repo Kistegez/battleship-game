@@ -48,12 +48,14 @@ public class ComputerPlayer extends Player{
             System.out.println("BIATCH Lil' AI HIT your ship");
             boardDisplay.displayBoard(enemyBoard,"shooting");
             boardDisplay.wait(3000);
+            ClearBoard.clearConsole();
         }else{
             location.setStatus(SquareStatus.MISSED);
             ClearBoard.clearConsole();
             System.out.println("Lil' AI MISSED your ship this time");
             boardDisplay.displayBoard(enemyBoard,"shooting");
             boardDisplay.wait(3000);
+            ClearBoard.clearConsole();
         }
     }
 
