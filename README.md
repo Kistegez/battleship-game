@@ -1,10 +1,10 @@
 # battleship-game
-It is a school team work project game written in Java (in one week).
+It is a school team work project game written in Java (in one week). The game runs in terminal
 It is a strategy and guessing game for two player (also can play against a dummy AI).
 Players alternate turns calling shots at the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
 
 ### requirements
-Requires Java version 17.
+Requires Java version 17. It has no server running on, the game only runs in the terminal.
 
 ### storage
 By default, InMemory storage is used. It does not require any DB to be installed, but the data are not persisted.
